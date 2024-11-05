@@ -1,0 +1,27 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        nums_size = len(nums)
+        for number_index in range(0, nums_size - 1):
+            for other_index in range(number_index + 1, nums_size):
+                if (nums[number_index] + nums[other_index]) == target:
+                    return [number_index, other_index]
+
+    def twoSumHashTable(self, nums, target):
+        numMap = {}
+        numbersSize = len(nums)
+
+        for i in range(0, numbersSize):
+            complement = target - nums[i]
+            if complement in numMap:
+                return [numMap[complement], i]
+            numMap[nums[i]] = i
+        return []
+
+        
+solution = Solution()
+solution.twoSum([2,7,11,15], 9)
